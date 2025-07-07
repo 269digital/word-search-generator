@@ -111,7 +111,6 @@ const WordSearchGenerator = () => {
       if (newRow < 0 || newRow >= GRID_SIZE || newCol < 0 || newCol >= GRID_SIZE) {
         return false;
       }
-      y
 const currentCell = grid[newRow][newCol];
 if (currentCell !== '') {
   if (currentCell !== word[i]) return false;

@@ -1,12 +1,10 @@
-word-search-generator/
-├── index.html
-├── package.json  
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── src/
-│   └── main.jsx
-├── components/
-│   └── WordSearchGenerator.js
-└── styles/
-    └── globals.css
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import WordSearchGenerator from '../components/WordSearchGenerator.js'
+import '../styles/globals.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <WordSearchGenerator />
+  </React.StrictMode>,
+)

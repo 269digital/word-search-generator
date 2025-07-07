@@ -197,15 +197,24 @@ const WordSearchGenerator = () => {
     setIsGenerated(true);
   };
 
-  const isSelectedWordCell = (row, col) => {
-    if (!showSolution) return false;
+const getWordOutline = (row, col) => {
+  if (!showSolution) return '';
+  
+  let borderStyle = '';
+  
+  // Find which selected word(s) this cell belongs to
+  wordPlacements.forEach(placement => {
+    if (!selectedWords.has(placement.word)) return;
     
-    // Check if this cell belongs to any successfully placed selected word
-    return wordPlacements.some(placement => {
-      if (!selectedWords.has(placement.word)) return false;
-      return placement.positions.some(([r, c]) => r === row && c === col);
-    });
-  };
+    const cellIndex = placement.positions.findIndex(([r, c]) => r === row && c === col);
+    if (cellIndex === -1) return;
+    
+    // Add a colored border around each word
+    borderStyle += 'border-2 border-blue-500 bg-blue-100 ';
+  });
+  
+  return borderStyle;
+};
 
   const getSelectedWordsList = () => {
     // Only return words that were both selected AND successfully placed
@@ -522,9 +531,9 @@ const WordSearchGenerator = () => {
                 row.map((cell, j) => (
                   <div
                     key={`${i}-${j}`}
-                    className={`border border-gray-300 flex items-center justify-center text-sm font-bold ${
-                      isSelectedWordCell(i, j) ? 'bg-yellow-300' : 'bg-white'
-                    }`}
+                className={`border border-gray-300 flex items-center justify-center text-sm font-bold ${
+                isSelectedWordCell(i, j) ? 'bg-yellow-300' : 'bg-white'
+                }`}
                   >
                     {cell}
                   </div>

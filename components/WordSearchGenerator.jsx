@@ -111,13 +111,10 @@ const WordSearchGenerator = () => {
       if (newRow < 0 || newRow >= GRID_SIZE || newCol < 0 || newCol >= GRID_SIZE) {
         return false;
       }
-      
-      // Prevent any overlapping - cell must be completely empty
-      const currentCell = grid[newRow][newCol];
-// Only allow overlap if it's a meaningful intersection (2+ letters)
+      y
+const currentCell = grid[newRow][newCol];
 if (currentCell !== '') {
   if (currentCell !== word[i]) return false;
-  // Discourage single-letter overlaps for cleaner layout
   if (Math.random() < 0.7) return false;
 }
     }
@@ -207,9 +204,6 @@ const isSelectedWordCell = (row, col) => {
     if (!selectedWords.has(placement.word)) return false;
     return placement.positions.some(([r, c]) => r === row && c === col);
   });
-};
-  
-  return borderStyle;
 };
 
   const getSelectedWordsList = () => {
@@ -528,7 +522,7 @@ const isSelectedWordCell = (row, col) => {
                   <div
                     key={`${i}-${j}`}
                 className={`border border-gray-300 flex items-center justify-center text-sm font-bold ${
-                  isSelectedWordCell(i, j) ? 'bg-gray-300' : 'bg-white'}`}
+  isSelectedWordCell(i, j) ? 'bg-gray-300' : 'bg-white'
                 }`}
                   >
                     {cell}

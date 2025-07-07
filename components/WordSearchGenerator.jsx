@@ -114,9 +114,9 @@ const WordSearchGenerator = () => {
       
       // Prevent any overlapping - cell must be completely empty
       const currentCell = grid[newRow][newCol];
-      if (currentCell !== '') {
-        return false;
-      }
+      if (currentCell !== '' && currentCell !== word[i]) {
+  return false;
+}
     }
     return true;
   };

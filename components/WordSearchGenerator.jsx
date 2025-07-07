@@ -395,16 +395,16 @@ const getWordOutline = (row, col) => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white">
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+    <div className="max-w-6xl mx-auto p-6 bg-slate-50 min-h-screen">
+      <h1 className="text-4xl font-bold text-center mb-12 text-slate-800 tracking-tight">
         Word Search Generator
       </h1>
 
       {/* File Upload Section */}
-      <div className="mb-8 p-6 bg-gray-50 rounded-lg">
-        <h2 className="text-xl font-semibold mb-4">1. Upload CSV File</h2>
+      <div className="mb-8 p-8 bg-white rounded-xl shadow-lg border border-slate-200">
+        <h2 className="text-2xl font-bold mb-6 text-slate-700">1. Upload CSV File</h2>
         <div className="flex items-center gap-4">
-          <label className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">
+          <label className="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-xl shadow-lg transition-all duration-200 cursor-pointer font-semibold">
             <Upload size={20} />
             Choose CSV File
             <input
@@ -422,7 +422,7 @@ const getWordOutline = (row, col) => {
 
       {/* Word Selection Section */}
       {words.length > 0 && (
-        <div className="mb-8 p-6 bg-gray-50 rounded-lg">
+        <div className="mb-8 p-8 bg-white rounded-xl shadow-lg border border-slate-200">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold">
               2. Select Words to Find ({selectedWords.size} selected)
@@ -430,7 +430,7 @@ const getWordOutline = (row, col) => {
             <div className="flex gap-2">
               <button
                 onClick={() => setSelectedWords(new Set(words))}
-                className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm"
+                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-10 py-4 rounded-xl shadow-xl font-bold flex items-center gap-3 mx-auto transition-all duration-200 transform hover:scale-105"
               >
                 Select All
               </button>
@@ -444,7 +444,7 @@ const getWordOutline = (row, col) => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-h-60 overflow-y-auto">
             {words.map(word => (
-              <label key={word} className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded">
+              <label key={word} className="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white px-6 py-3 rounded-xl shadow-lg font-semibold transition-all duration-200 transform hover:scale-105">
                 <input
                   type="checkbox"
                   checked={selectedWords.has(word)}
@@ -461,7 +461,7 @@ const getWordOutline = (row, col) => {
       {/* Puzzle Name Section */}
       {words.length > 0 && (
         <div className="mb-8 p-6 bg-gray-50 rounded-lg">
-          <h2 className="text-xl font-semibold mb-4">3. Name Your Puzzle</h2>
+          <h2 className="text-2xl font-bold mb-6 text-slate-700">3. Name Your Puzzle</h2>
           <input
             type="text"
             value={puzzleName}

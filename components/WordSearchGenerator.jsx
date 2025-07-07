@@ -522,10 +522,10 @@ const isSelectedWordCell = (row, col) => {
                   <div
                     key={`${i}-${j}`}
                 className={`border border-gray-300 flex items-center justify-center text-sm font-bold ${
-  isSelectedWordCell(i, j) ? 'bg-gray-300' : 'bg-white'
-                }`}
-                  >
-                    {cell}
+              isSelectedWordCell(i, j) ? 'bg-gray-300' : 'bg-white'
+                  }`}
+                    >
+                      {cell}
                   </div>
                 ))
               )}

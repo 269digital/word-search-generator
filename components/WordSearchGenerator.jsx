@@ -210,7 +210,7 @@ const getWordOutline = (row, col) => {
     if (cellIndex === -1) return;
     
     // Add a colored border around each word
-    borderStyle += 'border-2 border-blue-500 bg-blue-100 ';
+    borderStyle += 'border-4 border-red-600 bg-yellow-200 ';
   });
   
   return borderStyle;

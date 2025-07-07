@@ -114,8 +114,11 @@ const WordSearchGenerator = () => {
       
       // Prevent any overlapping - cell must be completely empty
       const currentCell = grid[newRow][newCol];
-      if (currentCell !== '' && currentCell !== word[i]) {
-  return false;
+// Only allow overlap if it's a meaningful intersection (2+ letters)
+if (currentCell !== '') {
+  if (currentCell !== word[i]) return false;
+  // Discourage single-letter overlaps for cleaner layout
+  if (Math.random() < 0.7) return false;
 }
     }
     return true;
@@ -163,7 +166,7 @@ const WordSearchGenerator = () => {
     for (const word of wordsToPlace) {
       let placed = false;
       // Give selected words more attempts to ensure they get placed
-      const attempts = selectedWords.has(word) ? 500 : 100;
+      const attempts = selectedWords.has(word) ? 300 : 50;
 
       for (let attempt = 0; attempt < attempts && !placed; attempt++) {
         const direction = DIRECTIONS[Math.floor(Math.random() * DIRECTIONS.length)];

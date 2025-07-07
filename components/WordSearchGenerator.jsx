@@ -531,8 +531,8 @@ const getWordOutline = (row, col) => {
                 row.map((cell, j) => (
                   <div
                     key={`${i}-${j}`}
-                className={`border border-gray-300 flex items-center justify-center text-sm font-bold ${
-                isSelectedWordCell(i, j) ? 'bg-yellow-300' : 'bg-white'
+                className={`border border-gray-300 flex items-center justify-center text-sm font-bold bg-white ${
+                  getWordOutline(i, j)
                 }`}
                   >
                     {cell}

@@ -200,21 +200,14 @@ if (currentCell !== '') {
     setIsGenerated(true);
   };
 
-const getWordOutline = (row, col) => {
-  if (!showSolution) return '';
+const isSelectedWordCell = (row, col) => {
+  if (!showSolution) return false;
   
-  let borderStyle = '';
-  
-  // Find which selected word(s) this cell belongs to
-  wordPlacements.forEach(placement => {
-    if (!selectedWords.has(placement.word)) return;
-    
-    const cellIndex = placement.positions.findIndex(([r, c]) => r === row && c === col);
-    if (cellIndex === -1) return;
-    
-    // Add a colored border around each word
-    borderStyle += 'border-4 border-red-600 bg-yellow-200 ';
+  return wordPlacements.some(placement => {
+    if (!selectedWords.has(placement.word)) return false;
+    return placement.positions.some(([r, c]) => r === row && c === col);
   });
+};
   
   return borderStyle;
 };
@@ -534,8 +527,8 @@ const getWordOutline = (row, col) => {
                 row.map((cell, j) => (
                   <div
                     key={`${i}-${j}`}
-                className={`border border-gray-300 flex items-center justify-center text-sm font-bold bg-white ${
-                  getWordOutline(i, j)
+                className={`border border-gray-300 flex items-center justify-center text-sm font-bold ${
+                  isSelectedWordCell(i, j) ? 'bg-gray-300' : 'bg-white'}`}
                 }`}
                   >
                     {cell}
